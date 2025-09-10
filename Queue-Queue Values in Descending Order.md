@@ -22,7 +22,41 @@ To write a Python program to:
 7. Print the updated list.
 
 ## 🧪 Program: 
+```python
+# Initialize empty queue
+q = []
+
+# Number of elements
+n = int(input("Enter number of elements in the queue: "))
+
+# Read elements
+for i in range(n):
+    val = int(input(f"Enter element {i+1}: "))
+    q.append(val)
+
+# Remove first two elements (FIFO)
+if len(q) >= 2:
+    q.pop(0)
+    q.pop(0)
+elif len(q) == 1:
+    q.pop(0)
+
+# Sort remaining elements in descending order
+q.sort(reverse=True)
+
+# Display the result
+print("Queue after removing first two elements and sorting in descending order:")
+print(q)
 
 ### Output:
+Enter number of elements in the queue: 5
+Enter element 1: 10
+Enter element 2: 20
+Enter element 3: 5
+Enter element 4: 15
+Enter element 5: 25
+Queue after removing first two elements and sorting in descending order:
+[25, 15, 5]
 
 ## Result:
+The Python program successfully simulates a queue, removes the first two elements, and displays the remaining values in descending order.
