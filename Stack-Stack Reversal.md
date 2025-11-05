@@ -21,37 +21,35 @@ To write a Python program that reverses the values in a stack using standard sta
 
 
 ### Program:
-```python
-# Initialize empty stack
-stack = []
+~~~
+def insertAtBottom(s, item):
+    if not s:
+        s.append(item)
+        return
+    top = s.pop()
+    insertAtBottom(s, item)
+    s.append(top)
 
-# Number of elements
-n = int(input("Enter number of elements to push onto the stack: "))
-
-# Push elements onto the stack
+def reverseStack(s):
+ 
+    if not s:
+        return
+ 
+    item = s.pop()
+    reverseStack(s)
+ 
+    insertAtBottom(s, item)
+    return s
+l=[]
+n=int(input())
 for i in range(n):
-    val = int(input(f"Enter element {i+1}: "))
-    stack.append(val)
-
-# Reverse stack
-reverse = []
-while stack:
-    reverse.append(stack.pop())
-
-# Display reversed stack
-print("Reversed stack elements:")
-print(reverse)
-
+    l.append(int(input()))
+print(reverseStack(l))
+~~~
 
 ## 🧪 Sample Input and Output
-Enter number of elements to push onto the stack: 5
-Enter element 1: 10
-Enter element 2: 20
-Enter element 3: 30
-Enter element 4: 40
-Enter element 5: 50
-Reversed stack elements:
-[50, 40, 30, 20, 10]
+<img width="604" height="289" alt="image" src="https://github.com/user-attachments/assets/04d483da-1f63-4739-9d14-d32501de8700" />
+
 
 ## Result
-The Python program successfully reverses the values in a stack using standard stack operations like push and pop
+Thus the output is verified.
