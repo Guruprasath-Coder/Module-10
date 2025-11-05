@@ -22,41 +22,23 @@ To write a Python program to:
 7. Print the updated list.
 
 ## 🧪 Program: 
-```python
-# Initialize empty queue
-q = []
-
-# Number of elements
-n = int(input("Enter number of elements in the queue: "))
-
-# Read elements
+~~~
+from queue import PriorityQueue
+que=PriorityQueue()
+n=int(input())
+l=[]
 for i in range(n):
-    val = int(input(f"Enter element {i+1}: "))
-    q.append(val)
-
-# Remove first two elements (FIFO)
-if len(q) >= 2:
-    q.pop(0)
-    q.pop(0)
-elif len(q) == 1:
-    q.pop(0)
-
-# Sort remaining elements in descending order
-q.sort(reverse=True)
-
-# Display the result
-print("Queue after removing first two elements and sorting in descending order:")
-print(q)
+    l.append(int(input()))
+for number in l:
+    que.put((-number, number))
+while not que.empty():
+    print(que.get()[1])
+~~~
 
 ### Output:
-Enter number of elements in the queue: 5
-Enter element 1: 10
-Enter element 2: 20
-Enter element 3: 5
-Enter element 4: 15
-Enter element 5: 25
-Queue after removing first two elements and sorting in descending order:
-[25, 15, 5]
+
+<img width="346" height="507" alt="image" src="https://github.com/user-attachments/assets/76e477d1-ae23-4f4a-aad0-2ff6f103a404" />
+
 
 ## Result:
-The Python program successfully simulates a queue, removes the first two elements, and displays the remaining values in descending order.
+Thus the output is verified.
