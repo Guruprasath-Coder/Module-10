@@ -21,39 +21,20 @@ To write a Python program to:
 6. Display the updated list.
 
 ##  Program:
-```python
-# Initialize empty list
-q = []
-
-# Number of string elements
-n = int(input("Enter number of string elements: "))
-
-# Read string inputs
+~~~
+from collections import deque
+q = deque()
+n=int(input())
 for i in range(n):
-    val = input(f"Enter string element {i+1}: ")
-    q.append(val)
-
-# Remove last two elements
-if len(q) >= 2:
-    q.pop()
-    q.pop()
-elif len(q) == 1:
-    q.pop()
-
-# Display the updated list
-print("Updated list after removing last two elements:")
+    q.append(input())
+for i in range(2):
+    q.popleft()
 print(q)
-
+~~~
 
 ### Output:
-Enter number of string elements: 5
-Enter string element 1: apple
-Enter string element 2: banana
-Enter string element 3: cherry
-Enter string element 4: date
-Enter string element 5: elderberry
-Updated list after removing last two elements:
-['apple', 'banana', 'cherry']
+<img width="1088" height="387" alt="image" src="https://github.com/user-attachments/assets/cb4a033f-8dce-4eca-84f8-4607038d6e50" />
+
 
 ## Result:
-The Python program successfully removes the last two string values from the list and displays the updated list.
+Thus the output is verified.
