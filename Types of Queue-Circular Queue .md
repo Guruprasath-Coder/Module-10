@@ -27,104 +27,46 @@ To develop a Python program that implements a Circular Queue:
 ---
 
 ## 💻 Program:
-```python
-class CircularQueue:
-    def __init__(self, size):
-        self.size = size
-        self.queue = [None] * size
-        self.front = -1
-        self.rear = -1
-
-    def enqueue(self, value):
-        # Check if queue is full
-        if (self.rear + 1) % self.size == self.front:
-            print("Queue is Full! Cannot insert:", value)
-            return
-
-        # Insert first element
-        if self.front == -1:
-            self.front = 0
-            self.rear = 0
-            self.queue[self.rear] = value
+~~~
+class MyCircularQueue():
+    def __init__(self, k):
+        self.k = k
+        self.queue = [None] * k
+        self.head = self.tail = -1
+    def enqueue(self, data):
+        if ((self.tail + 1) % self.k == self.head):
+            print("The circular queue is full\n")
+        elif (self.head == -1):
+            self.head = 0
+            self.tail = 0
+            self.queue[self.tail] = data
         else:
-            self.rear = (self.rear + 1) % self.size
-            self.queue[self.rear] = value
-
-    def dequeue(self):
-        # Check if queue is empty
-        if self.front == -1:
-            print("Queue is Empty! Cannot dequeue.")
-            return None
-
-        removed = self.queue[self.front]
-
-        # If only one element
-        if self.front == self.rear:
-            self.front = -1
-            self.rear = -1
+            self.tail = (self.tail + 1) % self.k
+            self.queue[self.tail] = data
+    #
+    def printCQueue(self):
+        if(self.head == -1):
+            print("No element in the circular queue")
+        elif (self.tail >= self.head):
+            for i in range(self.head, self.tail + 1):
+                print(self.queue[i], end=" ")
+            print()
         else:
-            self.front = (self.front + 1) % self.size
-
-        return removed
-
-    def display(self):
-        if self.front == -1:
-            print("Queue is Empty!")
-            return
-        i = self.front
-        print("Queue elements:", end=" ")
-        while True:
-            print(self.queue[i], end=" ")
-            if i == self.rear:
-                break
-            i = (i + 1) % self.size
-        print()
-
-
-# ---- Main Program ----
-cq = CircularQueue(5)
-
-print("Enter 3 values for the queue:")
-for _ in range(3):
-    val = int(input("Enter value: "))
-    cq.enqueue(val)
-
-print("\nInitial Queue State:")
-cq.display()
-
-print("\nRemoving 3 values:")
-for _ in range(3):
-    removed = cq.dequeue()
-    if removed is not None:
-        print("Removed:", removed)
-
-print("\nFinal Queue State:")
-cq.display()
-
+            for i in range(self.head, self.k):
+                print(self.queue[i], end=" ")
+            for i in range(0, self.tail + 1):
+                print(self.queue[i], end=" ")
+            print()
+obj = MyCircularQueue(5)
+for i in range(5):
+    obj.enqueue(int(input()))
+obj.printCQueue()
+~~~
 
 ### Output:
-Enter 3 values for the queue:
-Enter value: 10
-Enter value: 20
-Enter value: 30
+<img width="503" height="393" alt="image" src="https://github.com/user-attachments/assets/62e229dc-75a7-4a48-8e38-287fbe4836f0" />
 
-Initial Queue State:
-Queue elements: 10 20 30 
-
-Removing 3 values:
-Removed: 10
-Removed: 20
-Removed: 30
-
-Final Queue State:
-Queue is Empty!
 
 ## Result:
+Thus the output is verified.
 
-The Circular Queue was successfully implemented in Python. The program:
-
-Accepted 3 values from the user.
-
-Performed enqueue and dequeue operations.
-
-Displayed the removed values and final queue state.
